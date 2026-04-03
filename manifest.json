@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "X Badge Blocker",
+  "version": "1.0.0",
+  "description": "Automatically hide tweets and users who display specific project affiliate badges on X (Twitter).",
+  "permissions": ["storage", "contextMenus"],
+  "host_permissions": [
+    "https://x.com/*",
+    "https://twitter.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://x.com/*", "https://twitter.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "X Badge Blocker"
+  }
+}
